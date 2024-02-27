@@ -1,7 +1,7 @@
 import random
 
 
-def bullcows(guess: str, secret: str) -> (int, int):
+def bullscows(guess: str, secret: str) -> (int, int):
     
     bulls, cows = 0, 0
 

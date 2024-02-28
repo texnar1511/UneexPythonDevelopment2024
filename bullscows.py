@@ -20,11 +20,14 @@ def ask(prompt: str, valid: list[str] = None) -> str:
     '''
         Спрашивает слово у пользователя
     '''
-    a = input(cowsay.cowsay(prompt, cow = cowsay.get_random_cow()) + '\n')
+    with open('bill_cipher.cow') as f:
+        cowfile = cowsay.read_dot_cow(f)
+    
+    a = input(cowsay.cowsay(prompt, cowfile = cowfile) + '\n')
 
     if valid:
         while a not in valid:
-            a = input(cowsay.cowsay(prompt, cow = cowsay.get_random_cow()) + '\n')
+            a = input(cowsay.cowsay(prompt, cowfile = cowfile) + '\n')
 
     return a
 

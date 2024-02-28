@@ -1,4 +1,4 @@
-import random, argparse, urllib.request
+import random, argparse, urllib.request, cowsay
 
 
 def bullscows(guess: str, secret: str) -> (int, int):
@@ -20,11 +20,11 @@ def ask(prompt: str, valid: list[str] = None) -> str:
     '''
         Спрашивает слово у пользователя
     '''
-    a = input(prompt)
+    a = input(cowsay.cowsay(prompt, cow = cowsay.get_random_cow()) + '\n')
 
     if valid:
         while a not in valid:
-            a = input(prompt)
+            a = input(cowsay.cowsay(prompt, cow = cowsay.get_random_cow()) + '\n')
 
     return a
 
@@ -33,7 +33,7 @@ def inform(format_string: str, bulls: int, cows: int) -> None:
     '''
         Выводит результат пользователю
     '''
-    print(format_string.format(bulls, cows))
+    print(cowsay.cowsay(format_string.format(bulls, cows), cow = cowsay.get_random_cow()))
 
 
 def gameplay(ask: callable, inform: callable, words: list[str]) -> int:
